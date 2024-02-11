@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University ERP</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">University ERP</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="/Templates/about.html">About</a></li>
+                <li><a href="/Templates/academic.html">Academics</a></li>
+                <li><a href="/Templates/notification.html">Notifications</a></li>
+                <li><a href="/Templates/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop(); // Get the current page filename
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

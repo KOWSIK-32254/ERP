@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University ERP</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <!-- Include the navbar -->
+    <div id="navbar-container"></div>
+    
+    <!-- Your main content -->
+    <div class="main-content">
+        <!-- Replace h1 with span element for animated gradient text -->
+        <span class="animated-gradient-text"><b>Welcome to University ERP</b></span><br><br><br>
+    </div>
+
+    <!-- JavaScript to include the navbar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch and include the navbar content
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('navbar-container').innerHTML = html;
+                    
+                    // Highlight active page link
+                    const currentPage = window.location.pathname.split('/').pop();
+                    const navLinks = document.querySelectorAll('.nav-links a');
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === currentPage) {
+                            link.classList.add('active');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching navbar content:', error));
+        });
+    </script>
+
+</body>
+</html>
