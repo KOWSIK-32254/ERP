@@ -173,7 +173,10 @@
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
         </div>
-        
+
+        <br><br><br><br><br><br><br><br><br><br>
+            <div id="includedContent"></div>
+
         <script>
             let slideIndex = 0;
             showSlides();
@@ -204,6 +207,22 @@
             })
             .catch(error => console.error('Error fetching navbar content:', error));
     </script>
+
+<script>
+    fetch('../Templates/features.html') // Update the path as per your directory structure
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById('includedContent').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('There was a problem fetching the content:', error);
+        });
+</script>
    
 
 </body>

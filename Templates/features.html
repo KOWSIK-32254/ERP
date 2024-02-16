@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/feat.css">
+  </head>
+<body>
+   <!-- carousel -->
+ <div class="carousel">
+  <!-- list item -->
+  <div class="list">
+      <div class="item">
+          <img src="https://www.marcumevents.com/wp-content/uploads/sites/2/2023/08/header-ERP-operations.jpg">
+          <div class="content">
+              <div class="title">UNIVERSITY ERP</div><br>
+              <div class="topic">A Modern Solution For Daily Tasks</div><br>
+              <div class="des">
+                  <!-- lorem 50 -->
+                  University ERP, or Enterprise Resource Planning, is a modern solution to automate and manage daily tasks in a university setting. It is a comprehensive system that integrates various functional areas, such as finance, resources, student information, and academic affairs.
+              </div>
+          </div>
+      </div>
+     
+  </div>
+  <!-- list thumnail -->
+  <!-- next prev -->
+
+  <!-- time running -->
+  <div class="time"></div>
+</div>
+
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let nextDom = document.getElementById('next');
+      let prevDom = document.getElementById('prev');
+
+      let carouselDom = document.querySelector('.carousel');
+      let sliderDom = carouselDom.querySelector('.carousel .list');
+      let thumbnailDom = document.querySelector('.carousel .thumbnail');
+
+      let currentIndex = 0;
+      let interval;
+      let intervalDuration = 3000;
+
+      // Initialize thumbnails
+      const items = Array.from(sliderDom.querySelectorAll('.item'));
+      items.forEach((item, index) => {
+          const thumbnail = item.cloneNode(true);
+          thumbnail.classList.remove('item');
+          thumbnail.addEventListener('click', () => {
+              goToSlide(index);
+          });
+          thumbnailDom.appendChild(thumbnail);
+      });
+
+      nextDom.onclick = () => {
+          goToSlide(currentIndex + 1);
+      };
+
+      prevDom.onclick = () => {
+          goToSlide(currentIndex - 1);
+      };
+
+      function goToSlide(index) {
+          const slides = sliderDom.querySelectorAll('.item');
+          const thumbnails = thumbnailDom.querySelectorAll('.item');
+          const totalSlides = slides.length;
+
+          if (index < 0) {
+              index = totalSlides - 1;
+          } else if (index >= totalSlides) {
+              index = 0;
+          }
+
+          slides.forEach((slide) => {
+              slide.classList.remove('active');
+          });
+          thumbnails.forEach((thumbnail) => {
+              thumbnail.classList.remove('active');
+          });
+
+          slides[index].classList.add('active');
+          thumbnails[index].classList.add('active');
+
+          currentIndex = index;
+      }
+
+      function startInterval() {
+          interval = setInterval(() => {
+              goToSlide(currentIndex + 1);
+          }, intervalDuration);
+      }
+
+      function stopInterval() {
+          clearInterval(interval);
+      }
+
+      startInterval();
+      carouselDom.addEventListener('mouseenter', stopInterval);
+      carouselDom.addEventListener('mouseleave', startInterval);
+  });
+</script>
+  </html>
