@@ -175,7 +175,8 @@
                     <br><br><br><br><br>
                     <div id="timelineContainer"></div>
 
-                    <br><br><br><br><br>
+                    <br><br><br>
+                    <div id="why-us-container"></div>
         <script>
             let slideIndex = 0;
             showSlides();
@@ -240,27 +241,28 @@
 
 
 <script>
-    // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
+        var filePath = '../Templates/whyus.html';
+        xhr.open('GET', filePath, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                document.getElementById('why-us-container').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+</script>
+</body>
 
-    // Define the file path of testimonial.html
-    var filePath = '../Templates/whyus.html';
-
-    // Open a GET request to the file
-    xhr.open('GET', filePath, true);
-
-    // Define what happens on successful load of testimonial.html
-    xhr.onload = function() {
-        // Check if the request was successful
-        if (xhr.status === 200) {
-            // Insert the content of testimonial.html into the current page
-            document.body.innerHTML += xhr.responseText;
-        }
-    };
-
-    // Send the request
-    xhr.send();
+<br><br><br><br><br>
+<div id="footer-container"></div>
+<script>
+    fetch('../Templates/footer.html') // Replace 'footer.html' with the path to your footer HTML file
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => console.error('Error fetching footer content:', error));
 </script>
 
-</body>
+
 </html>
