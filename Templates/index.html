@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University ERP</title>
+    <link rel="stylesheet" href="../css/timeline.css"/> 
     <link rel="shortcut icon" href="/Images/ERP.png" type="image/x-icon">
     <style>
         * {box-sizing: border-box}
@@ -147,36 +148,34 @@
     <br><br>
     <div class="slideshow-container">
 
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="https://www.lighthouseindia.com/images/erp-culture.jpg" style="width:100%">
-        </div>
         
         <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
             <img src="https://www.webopedia.com/wp-content/uploads/1997/11/AdobeStock_199036362-scaled.jpeg" style="width:100%">
         </div>
         
         <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
             <img src="https://dynamics.folio3.com/blog/wp-content/uploads/2021/06/ERP-shutterstock_1356646916.jpg" style="width:100%">
         </div>
         
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+        <a class="prev" onclick="plusSlides(-1)"></a>
+        <a class="next" onclick="plusSlides(1)"></a>
         
         </div>
         <br>
         
         <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span> 
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
             <div id="includedContent"></div>
 
+
+                    <br><br><br><br><br>
+                    <div id="timelineContainer"></div>
+
+                    <br><br><br><br><br>
         <script>
             let slideIndex = 0;
             showSlides();
@@ -224,6 +223,44 @@
         });
 </script>
    
+<script>
+    function includeHTML() {
+            fetch('../Templates/timeline.html')
+            .then(response => response.text())
+            .then(data => {
+                const timelineContainer = document.getElementById('timelineContainer');
+                timelineContainer.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching HTML content:', error);
+            });
+        }
+        includeHTML();
+</script>
+
+
+<script>
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Define the file path of testimonial.html
+    var filePath = '../Templates/whyus.html';
+
+    // Open a GET request to the file
+    xhr.open('GET', filePath, true);
+
+    // Define what happens on successful load of testimonial.html
+    xhr.onload = function() {
+        // Check if the request was successful
+        if (xhr.status === 200) {
+            // Insert the content of testimonial.html into the current page
+            document.body.innerHTML += xhr.responseText;
+        }
+    };
+
+    // Send the request
+    xhr.send();
+</script>
 
 </body>
 </html>

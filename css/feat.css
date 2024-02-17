@@ -4,7 +4,6 @@ body{
     background-color: #ffffff;
     color: #eee;
     font-family: Poppins;
-    font-size: 12px;
 }
 
 header{
@@ -21,6 +20,23 @@ header a{
     color: #eee;
     margin-right: 40px;
 }
+.item {
+    display: flex;
+    align-items: center;
+    height: 250px;
+  }
+  
+  .item .content {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .item img {
+    width: 150px;
+    height: auto;
+    float: right;
+    margin-left: 20px;
+  }
 /* carousel */
 .carousel{
     height: 100vh;
