@@ -6,8 +6,75 @@
     <title>University ERP</title>
     <link rel="shortcut icon" href="/Images/ERP.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/navbar.css">
+    <style>
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp9764093.jpg');
+            background-repeat: no-repeat;
+        }
+
+        /* Modify the navbar styles */
+        .navbar {
+            background-color: transparent; /* Make the background transparent */
+            box-shadow: none; /* Remove any box shadow */
+        }
+
+        /* Modify the navbar links */
+        
+        .contain {
+            margin-left: 530px;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            color: #45a049;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            color: red;
+        }
+        .animated-gradient-text{
+            color: #fff;
+            font-size: larger;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0;">
+<body>
 
     <!-- Include the navbar -->
     <div id="navbar-container"></div>
@@ -17,6 +84,23 @@
         <!-- Replace h1 with span element for animated gradient text -->
         <span class="animated-gradient-text"><b>Welcome to University ERP</b></span><br><br><br>
     </div>
+
+    <br><br>
+
+<div class="contain">
+    <h1>Login</h1>
+    <form action="#" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Login">
+
+        <div class="message"><?php echo isset($message) ? $message : ''; ?></div>
+    </form>
+</div>
 
     <!-- JavaScript to include the navbar -->
     <script>
