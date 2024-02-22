@@ -4,103 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University ERP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  crossorigin="anonymous" />
     <link rel="shortcut icon" href="/Images/ERP.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/navbar.css">
     <style>
-        body {
-            background-image: url('https://wallpapercave.com/wp/wp9764093.jpg');
-            background-repeat: no-repeat;
-        }
-
         /* Modify the navbar styles */
         .navbar {
             background-color: transparent; /* Make the background transparent */
             box-shadow: none; /* Remove any box shadow */
         }
 
-        /* Modify the navbar links */
-        
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+        body {
+            background: whitesmoke;       
+            background-repeat: no-repeat;
+        }
+
         .contain {
-            margin-left: 530px;
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 10px;
-            color: #45a049;
-            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
         }
 
-        h1 {
-            text-align: center;
-            color: #333;
+        .screen {      
+            background: linear-gradient(90deg, #a51c24, #a51c24);     
+            position: relative; 
+            height: 600px;
+            width: 360px;   
+            box-shadow: 0px 0px 24px #fff;
         }
 
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
+        .screen__content {
+            z-index: 1;
+            position: relative; 
+            height: 100%;
         }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
+        .screen__background {       
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);    
         }
 
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px 20px;
+        .screen__background__shape {
+            transform: rotate(45deg);
+            position: absolute;
+        }
+
+        .screen__background__shape1 {
+            height: 520px;
+            width: 520px;
+            background: #ffffff;    
+            top: -50px;
+            right: 120px;   
+            border-radius: 0 72px 0 0;
+        }
+
+        .screen__background__shape2 {
+            height: 220px;
+            width: 220px;
+            background: #a51c24;   
+            top: -172px;
+            right: 0;   
+            border-radius: 32px;
+        }
+
+        .screen__background__shape3 {
+            height: 540px;
+            width: 190px;
+            background: linear-gradient(270deg, #a51c24, #a51c24);
+            top: -24px;
+            right: 0;   
+            border-radius: 32px;
+        }
+
+        .screen__background__shape4 {
+            height: 400px;
+            width: 200px;
+            background: #a51c24;   
+            top: 420px;
+            right: 50px;    
+            border-radius: 60px;
+        }
+
+        .login {
+            width: 320px;
+            padding: 30px;
+            padding-top: 156px;
+            position: relative; /* Ensure relative positioning for absolute child */
+        }
+
+        .login__logo {
+            position: absolute;
+            top: -50px; /* Adjust based on your preference */
+            left: 50%; /* Center the logo horizontally */
+            transform: translateX(-50%); /* Center the logo horizontally */
+            z-index: 1; /* Ensure the logo is above other elements */
+        }
+
+        .login__logo img {
+            width: 100px; /* Adjust based on the size of your logo */
+            height: 100px; /* Adjust based on the size of your logo */
+            border-radius: 50%; /* Make it circular */
+            border: 2px solid #fff; /* Optional: Add a border */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow */
+        }
+
+        .login__field {
+            padding: 20px 0px;    
+            position: relative;    
+        }
+
+        .login__icon {
+            position: absolute;
+            top: 30px;
+            color: green;
+        }
+
+        .login__input {
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-bottom: 2px solid #D1D1D4;
+            background: none;
+            padding: 10px;
+            padding-left: 24px;
+            font-weight: 700;
+            width: 75%;
+            transition: .2s;
+        }
+
+        .login__input:active,
+        .login__input:focus,
+        .login__input:hover {
+            outline: none;
+            border-bottom-color: #6A679E;
+        }
+
+        .login__submit {
+            background: #fff;
+            font-size: 14px;
+            margin-top: 30px;
+            padding: 16px 20px;
+            border-radius: 26px;
+            border: 1px solid #D4D3E8;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
             width: 100%;
+            color: green;
+            box-shadow: 0px 2px 2px green;
+            cursor: pointer;
+            transition: .2s;
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        .login__submit:active,
+        .login__submit:focus,
+        .login__submit:hover {
+            border-color: green;
+            outline: none;
         }
 
-        .message {
-            text-align: center;
-            color: red;
-        }
-        .animated-gradient-text{
-            color: #fff;
-            font-size: larger;
+        .button__icon {
+            font-size: 24px;
+            margin-left: auto;
+            color: green;
         }
     </style>
 </head>
 <body>
-
     <!-- Include the navbar -->
     <div id="navbar-container"></div>
     
     <!-- Your main content -->
-    <div class="main-content">
-        <!-- Replace h1 with span element for animated gradient text -->
-        <span class="animated-gradient-text"><b>Welcome to University ERP</b></span><br><br><br>
+    
+
+    <br> <br> <br> <br> <br> <br>
+
+    <div class="contain">
+        <div class="screen">
+            <div class="screen__content">
+                <div class="login__logo">
+                    <img src="/Images/ERP.png" alt="University ERP Logo">
+                </div>
+                <form class="login">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" placeholder="User name">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" placeholder="Password">
+                    </div>
+                    <button class="button login__submit">
+                        <span class="button__text">Log In Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>              
+                </form>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>     
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>      
+        </div>
     </div>
-
-    <br><br>
-
-<div class="contain">
-    <h1>Login</h1>
-    <form action="#" method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-
-        <input type="submit" value="Login">
-
-        <div class="message"><?php echo isset($message) ? $message : ''; ?></div>
-    </form>
-</div>
 
     <!-- JavaScript to include the navbar -->
     <script>
@@ -124,6 +239,5 @@
                 .catch(error => console.error('Error fetching navbar content:', error));
         });
     </script>
-
 </body>
 </html>
